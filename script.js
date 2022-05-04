@@ -1,4 +1,6 @@
-// define your variable
+// Be sure to check out the readMe for help.
+
+// define your variable Hint use document.querySelector()
 const testWrapper = document.querySelector(".test-wrapper");
 const testArea = document.querySelector("#test-area");
 const originText = document.querySelector("#origin-text p").innerHTML;
@@ -17,7 +19,7 @@ function leadingZero(time) {
     return time;
 }
 
-// Run a standard minute/second/hundredths timer:
+// Run a standard minute/second/hundredths timer:  Hint use Math.floor() and innerHTML
 function runTimer() {
     let currentTime = leadingZero(timer[0]) + ":" + leadingZero(timer[1]) + ":" + leadingZero(timer[2]);
     theTimer.innerHTML = currentTime;
@@ -46,7 +48,7 @@ function spellCheck() {
 
 }
 
-// Start the timer:
+// Start the timer: Hint use .length()
 function start() {
     let textEnterdLength = testArea.value.length;
     if (textEnterdLength === 0 && !timerRunning) {
@@ -58,10 +60,17 @@ function start() {
 
 // Reset everything:
 function reset() {
-    console.log("reset button has been pressed!");
+  clearInterval(interval);
+  interval = null;
+  timer = [0,0,0,0];
+  timerRunning = false;
+
+  testArea.value = "";
+  theTimer.innerHTML = "00:00:00";
+  testWrapper.style.borderColor = "grey";
 }
 
-// Event listeners for keyboard input and the reset
+// Event listeners for keyboard input and the reset: Hint use addEventListener()
 testArea.addEventListener("keypress", start, false);
 testArea.addEventListener("keyup", spellCheck, false);
 resetButton.addEventListener("click", reset, false);
